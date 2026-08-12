@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -5,41 +6,44 @@
 
 int main()
 {
-    int num;
-    pid_t pid;
-    long long factorial = 1;
+    int pid, num;
 
-    printf("Enter a number: ");
+    printf("Enter num\n");
     scanf("%d", &num);
 
-    pid = fork();
+    pid = fork();          // Creates child process
 
     if (pid < 0)
     {
-        printf("Fork failed!\n");
-        return 1;
+        printf("Fail to create new process\n");
+        exit(0);
     }
     else if (pid == 0)
     {
-        printf("\n--- Child Process ---\n");
-        printf("Child PID : %d\n", getpid());
-        printf("Parent PID: %d\n", getppid());
+        // Child Process - Calculate Factorial
 
-        for (int i = 1; i <= num; i++)
+        unsigned int fact = 1;
+        int temp = num;
+
+        while (temp > 0)
         {
-            factorial *= i;
+            fact = fact * temp;
+            temp--;
         }
 
-        printf("Factorial of %d = %lld\n", num, factorial);
+        printf("Factorial of %d is %d\n", num, fact);
     }
     else
     {
-        wait(NULL);
+        // Parent Process - Calculate Square
 
-        printf("\n--- Parent Process ---\n");
-        printf("Parent PID: %d\n", getpid());
+        int sqr;
 
-        printf("Square of %d = %d\n", num, num * num);
+        wait(NULL);        // Parent waits for child process to complete
+
+        sqr = num * num;
+
+        printf("Square of %d is %d\n", num, sqr);
     }
 
     return 0;
