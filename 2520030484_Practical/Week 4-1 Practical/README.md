@@ -1,10 +1,10 @@
 # Week 4-1 Practical – File System System Calls
 
-## Objective
+## Aim
 
 To demonstrate commonly used file-system system calls in C.
 
-## System Calls Demonstrated
+## System Calls Used
 
 - `open()`
 - `write()`
@@ -20,39 +20,11 @@ To demonstrate commonly used file-system system calls in C.
 - `truncate()`
 - `unlink()`
 
+## Program
+
+The program creates and opens `sample.txt`, writes and reads data, changes the file offset, duplicates file descriptors, synchronizes data, checks file information and permissions, truncates the file, and finally deletes it.
+
 ## Compile
 
 ```bash
 clang week41.c -o week41
-```
-
-## Execute
-
-```bash
-./week41
-```
-
-## Result
-
-The program successfully created, accessed, modified, synchronized, and deleted `sample.txt` using the required file-system system calls.
-
-The file permissions were changed from `644` to `600`, and the file was finally truncated and deleted using `truncate()` and `unlink()`.
-
-## Output
-
-![Program Output](Output-2.png)
-
-## Files
-
-```text
-4-1/
-├── README.md
-├── Output.png
-├── Output-2.png
-├── week41
-└── week41.c
-```
-
-## Conclusion
-
-The practical successfully demonstrated file handling, file-descriptor duplication, file information retrieval, permission management, file truncation, and file deletion using Linux system calls.
