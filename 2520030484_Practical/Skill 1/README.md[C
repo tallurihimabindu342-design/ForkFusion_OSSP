@@ -1,0 +1,20 @@
+# Skill 1 – Interactive Shell Loop
+
+## Aim
+
+To create a basic interactive shell that displays a prompt, accepts user input, processes commands, and exits when `exit` is entered.
+
+## Program
+
+The program uses a loop to:
+- Display the `myShell>` prompt.
+- Read user input using `fgets()`.
+- Remove the newline character.
+- Check for the `exit` command.
+- Display the entered command.
+
+## Compile
+
+```bash
+gcc Skill1.c -o Skill1
+
